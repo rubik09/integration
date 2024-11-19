@@ -5,6 +5,7 @@ import helmet from 'helmet';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
+  const config = new ConfigService();
   const app = await NestFactory.create(AppModule);
 
   app.useGlobalPipes(
@@ -27,8 +28,6 @@ async function bootstrap() {
 
   app.use(helmet());
 
-  await app.listen(HTTP_PORT, () => {
-    console.log(`🚀 Server listening ${HTTP_PORT} `);
-  });
+  await app.listen(HTTP_PORT);
 }
 bootstrap();
