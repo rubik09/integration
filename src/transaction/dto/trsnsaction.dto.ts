@@ -1,9 +1,6 @@
-import { IsString, IsBoolean, IsOptional, IsInt, IsMongoId } from 'class-validator';
+import { IsString, IsInt } from 'class-validator';
 
 export class TransactionDto {
-  @IsMongoId()
-  _id: string;
-
   @IsString()
   actionType: string;
 
@@ -21,14 +18,4 @@ export class TransactionDto {
 
   @IsString()
   geo: string;
-
-  @IsOptional()
-  @IsBoolean()
-  isSended?: boolean;
-
-  @IsOptional()
-  createdAt?: Date;
-
-  @IsOptional()
-  updatedAt?: Date;
 }

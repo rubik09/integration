@@ -9,5 +9,4 @@ export class CreateTransactionReqDto extends PickType(TransactionDto, [
   'platformId',
   'platformType',
   'geo',
-  'isSended',
 ]) {}

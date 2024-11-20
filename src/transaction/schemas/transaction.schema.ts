@@ -1,9 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
-import { ITransaction } from '../interfaces/interfaces';
 
 @Schema({ timestamps: true, versionKey: false, collection: 'transactions' })
-export class Transaction implements ITransaction {
+export class Transaction {
   _id: Types.ObjectId;
 
   @Prop({ required: true })
