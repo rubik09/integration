@@ -1,6 +1,7 @@
 import { IsString, IsInt } from 'class-validator';
+import { ITransaction } from '../interfaces/interfaces';
 
-export class TransactionDto {
+export class TransactionDto implements ITransaction {
   @IsString()
   actionType: string;
 

@@ -3,7 +3,7 @@ import { Document, Types } from 'mongoose';
 import { ITransaction } from '../interfaces/interfaces';
 
 @Schema({ timestamps: true, versionKey: false, collection: 'transactions' })
-export class Transaction implements ITransaction{
+export class Transaction implements ITransaction {
   _id: Types.ObjectId;
 
   @Prop({ required: true })
