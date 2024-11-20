@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
-const { HTTP_PORT, MONGO_DB} = process.env;
+const { HTTP_PORT, MONGO_DB } = process.env;
 export default (): any =>
   ({
     API_PREFIX: '/api',

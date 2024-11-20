@@ -1,9 +1,11 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { ITransaction } from '../../utils/interfaces';
+import { ITransaction } from '../interfaces';
+
+export type TransactionDocument = Transaction & Document;
 
 @Schema({ timestamps: true })
-export class Transaction extends Document implements ITransaction {
+export class Transaction implements ITransaction {
   @Prop({ required: true })
   actionType: string;
 
@@ -14,7 +16,7 @@ export class Transaction extends Document implements ITransaction {
   amount: number;
 
   @Prop({ required: true })
-  platformId: string;
+  platformType: string;
 
   @Prop({ required: true })
   geo: string;

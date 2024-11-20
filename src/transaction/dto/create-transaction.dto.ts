@@ -1,22 +1,12 @@
-import { IsString, IsNumber, IsBoolean, IsOptional } from 'class-validator';
+import { PickType } from '@nestjs/mapped-types';
 
-export class CreateTransactionDto {
-  @IsString()
-  actionType: string;
+import { TransactionDto } from './trsnsaction.dto';
 
-  @IsString()
-  currency: string;
-
-  @IsNumber()
-  amount: number;
-
-  @IsString()
-  platformId: string;
-
-  @IsString()
-  geo: string;
-
-  @IsOptional()
-  @IsBoolean()
-  isSended?: boolean;
-}
+export class CreateTransactionDto extends PickType(TransactionDto, [
+  'actionType',
+  'currency',
+  'amount',
+  'platformType',
+  'geo',
+  'isSended',
+]) {}
