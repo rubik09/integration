@@ -1,8 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { ITransaction } from '../interfaces';
-
-export type TransactionDocument = Transaction & Document;
+import { ITransaction } from '../interfaces/interfaces';
 
 @Schema({ timestamps: true })
 export class Transaction implements ITransaction {
@@ -29,3 +27,4 @@ export class Transaction implements ITransaction {
 }
 
 export const TransactionSchema = SchemaFactory.createForClass(Transaction);
+export type TransactionDocument = Transaction & Document;
