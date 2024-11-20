@@ -6,6 +6,7 @@ export class CreateTransactionDto extends PickType(TransactionDto, [
   'actionType',
   'currency',
   'amount',
+  'platformId',
   'platformType',
   'geo',
   'isSended',

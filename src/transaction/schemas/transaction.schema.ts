@@ -16,6 +16,9 @@ export class Transaction implements ITransaction {
   amount: number;
 
   @Prop({ required: true })
+  platformId: string;
+
+  @Prop({ required: true })
   platformType: string;
 
   @Prop({ required: true })

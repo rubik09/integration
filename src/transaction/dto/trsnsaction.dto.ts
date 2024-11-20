@@ -11,6 +11,9 @@ export class TransactionDto {
   amount: number;
 
   @IsString()
+  platformId: string;
+
+  @IsString()
   platformType: string;
 
   @IsString()
