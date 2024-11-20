@@ -5,14 +5,14 @@ import { Transaction, TransactionDocument } from './schemas/transaction.schema';
 import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
-export class TransactionRepository {
+export class TransactionProvider {
   constructor(
     @InjectModel(Transaction.name)
-    private transactionModel: Model<Transaction>,
+    private transactionModel: Model<TransactionDocument>,
   ) {}
 
   async createTransaction(createTransactionReqDto: CreateTransactionReqDto): Promise<TransactionDocument> {
-    const createdCat = new this.transactionModel(createTransactionReqDto);
-    return createdCat.save();
+    const createdTransaction = new this.transactionModel(createTransactionReqDto);
+    return await createdTransaction.save();
   }
 }
