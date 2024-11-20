@@ -1,4 +1,7 @@
+import { Types } from "mongoose";
+
 export interface ITransaction {
+  _id?: Types.ObjectId; 
   actionType: string;
   currency: string;
   amount: number;
@@ -6,4 +9,6 @@ export interface ITransaction {
   platformType: string;
   geo: string;
   isSended: boolean;
+  createdAt?: Date;
+  updatedAt?: Date; 
 }

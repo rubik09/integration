@@ -1,9 +1,11 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 import { ITransaction } from '../interfaces/interfaces';
 
 @Schema({ timestamps: true, versionKey: false, collection: 'transactions' })
 export class Transaction implements ITransaction {
+  _id: Types.ObjectId;
+
   @Prop({ required: true })
   actionType: string;
 
@@ -24,6 +26,9 @@ export class Transaction implements ITransaction {
 
   @Prop({ default: false })
   isSended: boolean;
+
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export const TransactionSchema = SchemaFactory.createForClass(Transaction);
