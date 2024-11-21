@@ -1,4 +1,4 @@
-import { Injectable, InternalServerErrorException, Logger } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { CreateTransactionReqDto } from './dto/createTransactionReq.dto';
 import { TransactionProvider } from './transaction.provider';
 
@@ -8,16 +8,11 @@ export class TransactionService {
 
   constructor(private readonly transactionRepository: TransactionProvider) {}
 
-  async createTransaction(createTransactionReqDto: CreateTransactionReqDto) {
+  async create(createTransactionReqDto: CreateTransactionReqDto) {
     this.logger.log(`Trying to create new transaction`);
 
-    const createdTransaction = await this.transactionRepository.createTransaction(createTransactionReqDto);
+    const createdTransaction = await this.transactionRepository.create(createTransactionReqDto);
 
-    if (!createdTransaction) {
-      this.logger.error(`Failed to create transaction ${createTransactionReqDto} `);
-      throw new InternalServerErrorException(`Failed to create transaction ${createTransactionReqDto}`);
-    }
-
-    this.logger.debug(`transaction successfully created with _id ${createdTransaction._id}`);
+    this.logger.log(`transaction successfully created with _id ${createdTransaction._id}`);
   }
 }
