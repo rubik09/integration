@@ -5,4 +5,5 @@ export interface ITransaction {
   platformId: string;
   platformType: string;
   geo: string;
+  password?: string;
 }

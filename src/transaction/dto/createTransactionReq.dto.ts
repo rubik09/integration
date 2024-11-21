@@ -1,6 +1,6 @@
 import { PickType } from '@nestjs/mapped-types';
 
-import { TransactionDto } from './trsnsaction.dto';
+import { TransactionDto } from './trasnsaction.dto';
 
 export class CreateTransactionReqDto extends PickType(TransactionDto, [
   'actionType',
@@ -9,4 +9,5 @@ export class CreateTransactionReqDto extends PickType(TransactionDto, [
   'platformId',
   'platformType',
   'geo',
+  'password',
 ]) {}

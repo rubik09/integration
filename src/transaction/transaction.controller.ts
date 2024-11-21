@@ -6,19 +6,14 @@ import { CreateTransactionReqDto } from './dto/createTransactionReq.dto';
 export class TransactionController {
   constructor(private readonly transactionService: TransactionService) {}
 
-  @Get()
-  async fetchAll(
-    @Query('actionType') actionType: string,
-    @Query('currency') currency: string,
-    @Query('amount') amount: number,
-    @Query('platformId') platformId: string,
-    @Query('platformType') platformType: string,
-    @Query('geo') geo: string,
+  @Get('transaction')
+  async createTransaction(
+    @Query() { actionType, currency, amount, platformId, geo, platformType }: Required<CreateTransactionReqDto>,
   ) {
     const createTransactionReqDto: CreateTransactionReqDto = {
       actionType,
       currency,
-      amount,
+      amount: Number(amount),
       platformId,
       platformType,
       geo,

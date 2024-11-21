@@ -21,6 +21,9 @@ export class Transaction implements ITransaction {
   @Prop({ required: true })
   platformType: string;
 
+  @Prop({ required: false })
+  password: string;
+
   @Prop({ required: true })
   geo: string;
 

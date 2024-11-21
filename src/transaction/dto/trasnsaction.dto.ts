@@ -1,4 +1,4 @@
-import { IsString, IsInt } from 'class-validator';
+import { IsString, IsInt, IsOptional } from 'class-validator';
 import { ITransaction } from '../interfaces/interfaces';
 
 export class TransactionDto implements ITransaction {
@@ -16,6 +16,10 @@ export class TransactionDto implements ITransaction {
 
   @IsString()
   platformType: string;
+
+  @IsOptional()
+  @IsString()
+  password?: string;
 
   @IsString()
   geo: string;
