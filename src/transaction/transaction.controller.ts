@@ -2,11 +2,11 @@ import { Controller, Get, Query } from '@nestjs/common';
 import { TransactionService } from './transaction.service';
 import { CreateTransactionReqDto } from './dto/createTransactionReq.dto';
 
-@Controller()
+@Controller('transaction')
 export class TransactionController {
   constructor(private readonly transactionService: TransactionService) {}
 
-  @Get('transaction')
+  @Get()
   async createTransaction(
     @Query() { actionType, currency, amount, platformId, geo, platformType }: Required<CreateTransactionReqDto>,
   ) {
@@ -19,6 +19,6 @@ export class TransactionController {
       geo,
     };
 
-    return await this.transactionService.create(createTransactionReqDto);
+    await this.transactionService.create(createTransactionReqDto);
   }
 }
