@@ -9,7 +9,7 @@ export class TransactionService {
 
   constructor(private readonly transactionProvider: TransactionProvider) {}
 
-  async create(createTransactionReqDto: CreateTransactionReqDto) {
+  async create(createTransactionReqDto: CreateTransactionReqDto): Promise<string | undefined> {
     this.logger.log(`Trying to create new transaction`);
 
     if (createTransactionReqDto.actionType === 'reg') {
@@ -19,5 +19,7 @@ export class TransactionService {
     const createdTransaction = await this.transactionProvider.create(createTransactionReqDto);
 
     this.logger.log(`transaction successfully created with _id ${createdTransaction._id}`);
+
+    return createTransactionReqDto.actionType === 'reg' ? createdTransaction.password : undefined;
   }
 }

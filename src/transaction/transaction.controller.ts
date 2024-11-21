@@ -19,6 +19,6 @@ export class TransactionController {
       geo,
     };
 
-    await this.transactionService.create(createTransactionReqDto);
+    return await this.transactionService.create(createTransactionReqDto);
   }
 }
