@@ -1,4 +1,5 @@
-import { IsString, IsInt, IsOptional } from 'class-validator';
+import { IsInt, IsOptional, IsString } from 'class-validator';
+
 import { ITransaction } from '../interfaces/interfaces';
 
 export class TransactionDto implements ITransaction {
