@@ -3,7 +3,7 @@ import { Controller, Get, Query } from '@nestjs/common';
 import { CreateTransactionReqDto } from './dto/createTransactionReq.dto';
 import { TransactionService } from './transaction.service';
 
-@Controller('transaction')
+@Controller('postback')
 export class TransactionController {
   constructor(private readonly transactionService: TransactionService) {}
 
