@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: integration
+    env_file:
+      - .env
+    ports:
+      - '4000:4000'
+
+  mongoDB:
+    image: mongo:6.0
+    ports:
+      - '27017:27017'
+    # volumes:
+    #   - mongo
+    env_file:
+      - .env
+    networks:
+      - integration
