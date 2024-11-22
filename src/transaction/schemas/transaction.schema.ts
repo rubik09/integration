@@ -10,10 +10,10 @@ export class Transaction implements ITransaction {
   @Prop({ required: true })
   actionType: string;
 
-  @Prop({ required: false })
+  @Prop({ required: false, default: null, set: (value: string) => (value === '' ? null : value) })
   currency: string;
 
-  @Prop({ required: false })
+  @Prop({ required: false, default: null, set: (value: string) => (value === '' ? null : value) })
   amount: number;
 
   @Prop({ required: true })
