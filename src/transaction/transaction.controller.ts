@@ -10,15 +10,6 @@ export class TransactionController {
   async createTransaction(
     @Query() { actionType, currency, amount, platformId, geo, platformType }: Required<CreateTransactionReqDto>,
   ) {
-    const createTransactionReqDto: CreateTransactionReqDto = {
-      actionType,
-      currency,
-      amount: Number(amount),
-      platformId,
-      platformType,
-      geo,
-    };
-
-    await this.transactionService.create(createTransactionReqDto);
+    await this.transactionService.create({ actionType, currency, amount, platformId, geo, platformType });
   }
 }

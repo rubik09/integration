@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { CreateTransactionReqDto } from './dto/createTransactionReq.dto';
 import { TransactionProvider } from './transaction.provider';
-import generatePassword from 'src/utils/generatePassword';
+import proccesedActionType from '../utils/proccesedActionType';
 
 @Injectable()
 export class TransactionService {
@@ -12,9 +12,7 @@ export class TransactionService {
   async create(createTransactionReqDto: CreateTransactionReqDto) {
     this.logger.log(`Trying to create new transaction`);
 
-    if (createTransactionReqDto.actionType === 'reg') {
-      return { ...createTransactionReqDto, password: generatePassword() };
-    }
+    proccesedActionType(createTransactionReqDto);
 
     const createdTransaction = await this.transactionProvider.create(createTransactionReqDto);
 
