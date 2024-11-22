@@ -9,6 +9,7 @@ export class TransactionResDto implements Transaction {
   geo: string;
   platformType: string;
   platformId: string;
+  password: string;
   amount: number;
   isSended: boolean;
   createdAt: Date;
