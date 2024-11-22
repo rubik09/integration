@@ -6,11 +6,13 @@ export class TransactionDto implements ITransaction {
   @IsString()
   actionType: string;
 
+  @IsOptional()
   @IsString()
-  currency: string;
+  currency?: string;
 
+  @IsOptional()
   @IsInt()
-  amount: number;
+  amount?: number;
 
   @IsString()
   platformId: string;
