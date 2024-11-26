@@ -18,6 +18,7 @@ services:
 
   db:
     image: mongo:6.0
+    restart: always
     container_name: mongodb
     volumes:
       - mongo-volume:/data/db
