@@ -12,9 +12,12 @@ import { TransactionsModule } from './transaction/transaction.module';
       load: [config],
     }),
     MongooseModule.forRootAsync({
-      useFactory: async (configService: ConfigService) => ({
-        uri: configService.getOrThrow<string>('MONGO_DB'),
-      }),
+      useFactory: async (configService: ConfigService) => {
+        const dbConfig = configService.getOrThrow('MONGO_DB_SETTINGS');
+        return {
+          uri: `mongodb+srv://${dbConfig.username}:${dbConfig.password}@${dbConfig.host}/${dbConfig.database}?authSource=${dbConfig.authSource}`,
+        };
+      },
       inject: [ConfigService],
     }),
     TransactionsModule,
