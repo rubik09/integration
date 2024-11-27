@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: integration
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - db
+
+  db:
+    image: mongo:6.0
+    restart: always
+    container_name: mongodb
+    volumes:
+      - mongo-volume:/data/db
+    env_file:
+      - .env
+
+volumes:
+  mongo-volume:

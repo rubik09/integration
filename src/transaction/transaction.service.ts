@@ -1,4 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
+
 import { CreateTransactionReqDto } from './dto/createTransactionReq.dto';
 import { TransactionProvider } from './transaction.provider';
 
@@ -20,12 +21,8 @@ export class TransactionService {
     this.logger.log(`Starting to proccese createTransactionReqDto ${JSON.stringify(createTransactionReqDto)}`);
     if (createTransactionReqDto.actionType === 'reg') {
       this.logger.debug(`actionType registration`);
-      const password = this.generatePassword();
-      createTransactionReqDto.password = password;
+      createTransactionReqDto.password = createTransactionReqDto.platformId;
     }
     await this.create(createTransactionReqDto);
-  }
-  private generatePassword(): string {
-    return Array.from({ length: 10 }, () => Math.floor(Math.random() * 10).toString()).join('');
   }
 }

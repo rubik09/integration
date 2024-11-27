@@ -1,8 +1,9 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { TransactionService } from './transaction.service';
-import { CreateTransactionReqDto } from './dto/createTransactionReq.dto';
 
-@Controller('transaction')
+import { CreateTransactionReqDto } from './dto/createTransactionReq.dto';
+import { TransactionService } from './transaction.service';
+
+@Controller('postback')
 export class TransactionController {
   constructor(private readonly transactionService: TransactionService) {}
 

@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
+
 import { ITransaction } from '../interfaces/interfaces';
 
 @Schema({ timestamps: true, versionKey: false, collection: 'transactions' })
@@ -9,10 +10,10 @@ export class Transaction implements ITransaction {
   @Prop({ required: true })
   actionType: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false, default: null, set: (value: string) => (value === '' ? null : value) })
   currency: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false, default: null, set: (value: string) => (value === '' ? null : value) })
   amount: number;
 
   @Prop({ required: true })
