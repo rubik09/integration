@@ -9,8 +9,17 @@ export class TransactionController {
 
   @Get()
   async createTransaction(
-    @Query() { actionType, currency, amount, platformId, geo, platformType }: Required<CreateTransactionReqDto>,
+    @Query()
+    { actionType, currency, amount, platformId, geo, platformType, clickId }: Required<CreateTransactionReqDto>,
   ) {
-    await this.transactionService.proccesedActionType({ actionType, currency, amount, platformId, geo, platformType });
+    await this.transactionService.proccesedActionType({
+      actionType,
+      currency,
+      amount,
+      platformId,
+      geo,
+      platformType,
+      clickId,
+    });
   }
 }

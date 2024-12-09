@@ -7,6 +7,7 @@ export class TransactionResDto implements Transaction {
   actionType: string;
   currency: string;
   geo: string;
+  clickId: string;
   platformType: string;
   platformId: string;
   password: string;

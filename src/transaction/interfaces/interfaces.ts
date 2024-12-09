@@ -5,5 +5,6 @@ export interface ITransaction {
   platformId: string;
   platformType: string;
   geo: string;
+  clickId: string;
   password?: string;
 }

@@ -26,4 +26,7 @@ export class TransactionDto implements ITransaction {
 
   @IsString()
   geo: string;
+
+  @IsString()
+  clickId: string;
 }
