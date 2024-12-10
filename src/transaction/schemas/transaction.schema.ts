@@ -28,6 +28,9 @@ export class Transaction implements ITransaction {
   @Prop({ required: true })
   geo: string;
 
+  @Prop({ required: false, default: null, set: (value: string) => (value === '' ? null : value) })
+  clickId: string;
+
   @Prop({ default: false })
   isSended: boolean;
 

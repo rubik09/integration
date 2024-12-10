@@ -10,4 +10,5 @@ export class CreateTransactionReqDto extends PickType(TransactionDto, [
   'platformType',
   'geo',
   'password',
+  'clickId',
 ]) {}
